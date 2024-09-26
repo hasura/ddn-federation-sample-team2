@@ -2,7 +2,7 @@ kind: Connector
 version: v2
 definition:
   name: clickhouse
-  subgraph: analytics
+  subgraph: sales
   source: hasura/clickhouse:v0.2.8
   context: .
   envMapping:

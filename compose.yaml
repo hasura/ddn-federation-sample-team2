@@ -1,9 +1,5 @@
 include:
-  - path: analytics/connector/clickhouse/compose.yaml
-  - path: experience/connector/mongo/compose.yaml
-  - path: experience/connector/pg/compose.yaml
   - path: sales/connector/pg/compose.yaml
-  - path: users/connector/user_pg/compose.yaml
 services:
   engine:
     build:

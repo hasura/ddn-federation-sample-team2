@@ -4,7 +4,6 @@ definition:
   current: default
   contexts:
     default:
-      project: easy-labrador-2066
       supergraph: ../supergraph.yaml
       localEnvFile: ../.env
       cloudEnvFile: ../.env.cloud
