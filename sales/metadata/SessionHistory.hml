@@ -87,3 +87,21 @@ definition:
     - role: admin
       select:
         filter: null
+---
+kind: Relationship
+version: v1
+definition:
+  name: user
+  source: SessionHistory
+  target:
+    model:
+      name: Users
+      subgraph: experience
+      relationshipType: Object
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: userId
+      target:
+        modelField:
+          - fieldName: id
