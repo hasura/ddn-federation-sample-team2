@@ -1,6 +1,7 @@
 **Context: You have been invited to DDN Project by the owner of a supergraph (Team1)**
+Next step of the workflow mentioned here - https://github.com/hasura/ddn-sample-app/tree/multirepo/team1admin
 
-You are subgraph admin for the `sales` subgraphs/domain.
+You are subgraph admin for the `sales` subgraphs/domain. Git clone this repo.
 
 1. Go to hasura.console.io and accept the invite and expore the experience subgraph by Team1
 2. Go to Settings in the console and copy the project name.
@@ -73,13 +74,17 @@ Go to console to see the new relationship
 but
  `ddn supergraph build create --subgraph-version sales:<version_number> --base-supergraph-on-applied`
 throws the following error because of the cross repo inconsistency
+<br><br>
 ![alt text](crossrepobuildvalidation.png)
 
 This is critical - first time pre commit, pre build - over time provide compiler type safety and experience
 Correct the above error and build subgraph again. Now you can ask for a PR Merge Request. 
 
 10.  Subgraph Admin - Tests the new build using the PR and decides to merge it to main
-11. Only Subgraph Admin Step below - can cause breaking behaviour! 
-`ddn subgraph build apply <version> # from the previous command`
+
+
+**Only Subgraph Admin Step below - can cause breaking behaviour!** 
+
+`ddn subgraph build apply <version>`
 
 Go to console to show new build applied.
