@@ -118,7 +118,7 @@ definition:
   isNull:
     enable: true
   graphql:
-    typeName: TimestamptzBoolExp
+    typeName: Sales_TimestamptzBoolExp
 
 ---
 kind: BooleanExpressionType
@@ -150,7 +150,7 @@ definition:
   isNull:
     enable: true
   graphql:
-    typeName: UuidBoolExp
+    typeName: Sales_UuidBoolExp
 
 ---
 kind: BooleanExpressionType
@@ -182,7 +182,7 @@ definition:
   isNull:
     enable: true
   graphql:
-    typeName: BoolBoolExp
+    typeName: Sales_BoolBoolExp
 
 ---
 kind: BooleanExpressionType
@@ -234,7 +234,7 @@ definition:
   isNull:
     enable: true
   graphql:
-    typeName: TextBoolExp
+    typeName: Sales_TextBoolExp
 
 ---
 kind: AggregateExpression
@@ -262,7 +262,7 @@ definition:
   countDistinct:
     enable: true
   graphql:
-    selectTypeName: TimestamptzAggExp
+    selectTypeName: Sales_TimestamptzAggExp
 
 ---
 kind: AggregateExpression
@@ -282,7 +282,7 @@ definition:
   countDistinct:
     enable: true
   graphql:
-    selectTypeName: UuidAggExp
+    selectTypeName: Sales_UuidAggExp
 
 ---
 kind: AggregateExpression
@@ -314,7 +314,7 @@ definition:
   countDistinct:
     enable: true
   graphql:
-    selectTypeName: BoolAggExp
+    selectTypeName: Sales_BoolAggExp
 
 ---
 kind: AggregateExpression
@@ -342,7 +342,7 @@ definition:
   countDistinct:
     enable: true
   graphql:
-    selectTypeName: TextAggExp
+    selectTypeName: Sales_TextAggExp
 
 ---
 kind: BooleanExpressionType
@@ -374,7 +374,7 @@ definition:
   isNull:
     enable: true
   graphql:
-    typeName: Int4BoolExp
+    typeName: Sales_Int4BoolExp
 
 ---
 kind: ScalarType
@@ -382,7 +382,7 @@ version: v1
 definition:
   name: Numeric
   graphql:
-    typeName: Numeric
+    typeName: sales_Numeric
 
 ---
 kind: DataConnectorScalarRepresentation
@@ -392,7 +392,7 @@ definition:
   dataConnectorScalarType: numeric
   representation: Numeric
   graphql:
-    comparisonExpressionTypeName: NumericComparisonExp
+    comparisonExpressionTypeName: Sales_NumericComparisonExp
 
 ---
 kind: BooleanExpressionType
@@ -424,7 +424,7 @@ definition:
   isNull:
     enable: true
   graphql:
-    typeName: NumericBoolExp
+    typeName: Sales_NumericBoolExp
 
 ---
 kind: ScalarType
@@ -432,7 +432,7 @@ version: v1
 definition:
   name: Int8
   graphql:
-    typeName: Int8
+    typeName: Sales_Int8
 
 ---
 kind: DataConnectorScalarRepresentation
@@ -442,7 +442,7 @@ definition:
   dataConnectorScalarType: int8
   representation: Int8
   graphql:
-    comparisonExpressionTypeName: Int8ComparisonExp
+    comparisonExpressionTypeName: Sales_Int8ComparisonExp
 
 ---
 kind: BooleanExpressionType
@@ -474,7 +474,7 @@ definition:
   isNull:
     enable: true
   graphql:
-    typeName: Int8BoolExp
+    typeName: Sales_Int8BoolExp
 
 ---
 kind: AggregateExpression
@@ -546,5 +546,5 @@ definition:
   countDistinct:
     enable: true
   graphql:
-    selectTypeName: Int4AggExp
+    selectTypeName: Sales_Int4AggExp
 

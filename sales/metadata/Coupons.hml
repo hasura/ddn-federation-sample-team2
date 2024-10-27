@@ -207,5 +207,5 @@ definition:
   count:
     enable: true
   graphql:
-    selectTypeName: CouponsAggExp
+    selectTypeName: Sales_CouponsAggExp
 

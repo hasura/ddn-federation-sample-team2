@@ -26,43 +26,60 @@ ddn subgraph build create --subgraph sales/subgraph.yaml
 
 2. Go to Console - Subgraph builds appear
 
-![alt text](images/subgraphbuild.png)
+![alt text](subgraphbuild.png)
 
 But you still need one more step to test
 
-1. `ddn supergraph build create --subgraph-version sales:<version_number>`
-Here DDN does a cross repo (subgraph) check to ensure that there are no breaking changes to the larger API
+3. `ddn supergraph build create --subgraph-version sales:<version_number> --base-supergraph-on-applied`
+Here DDN control does a cross repo (subgraph) check to ensure that there are no breaking changes to the larger API.
 
-This is a signficant milestone since the subgraph developer is able to push to Team1 project
+This is a signficant milestone since the subgraph developer is able to push to Team1 project anf get a test-able API.
 
-1. Go to Console -explorer - sales subgraph is added
-2. Add a comment on the userid in Coupon table for a multi repo relationship
-3. Add the following multi repo relationship in file `.hml`
-    ```yaml
-    kind: Relationship
-    version: v1
-    definition:
-    name: products
-    source: Orders
-    target:
-        model:
-        name: Products
-        subgraph: experience
-        relationshipType: Object
-    mapping:
-        - source:
-            fieldPath:
-            - fieldName: productId
-        target:
-            modelField:
-            - fieldName: id
-    ```
+4. Go to Console -explorer - sales subgraph is added
+5. Add a comment on the productId in Products table for a multi repo relationship
+6. Add the following multi repo relationship in file `sales/metadata/Orders.hml`
+```yaml
+---
+kind: Relationship
+version: v1
+definition:
+  name: products
+  source: Orders
+  target:
+    model:
+      name: Products
+      subgraph: experience
+      relationshipType: Object
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: productId
+      target:
+        modelField:
+          - fieldName: id
+```
 
+7. Create Subgraph Build
+```bash
+ddn subgraph build create --subgraph sales/subgraph.yaml
+# ddn subgraph build create --subgraph sales/subgraph.yaml --no-build-connectors
+```
+8.  `ddn supergraph build create --subgraph-version sales:<version_number> --base-supergraph-on-applied`
+
+Go to console to see the new relationship
+
+9. Make an error in the metadata for example change the name of this `fieldName: productId`
+`ddn subgraph build create --subgraph sales/subgraph.yaml` goes fine
+but
+ `ddn supergraph build create --subgraph-version sales:<version_number> --base-supergraph-on-applied`
+throws the following error because of the cross repo inconsistency
+![alt text](crossrepobuildvalidation.png)
+
+This is critical - first time pre commit, pre build - over time provide compiler type safety and experience
+Correct the above error and build subgraph again. Now you can ask for a PR Merge Request. 
+
+10.  Subgraph Admin - Tests the new build using the PR and decides to merge it to main
+11. Only Subgraph Admin Step below - can cause breaking behaviour! 
 `ddn subgraph build apply <version> # from the previous command`
 
-
-## Add cross subgraph relationships
-
-```bash
-git merge feature_cross_subgraph_relationships
-```
+Go to console to show new build applied.

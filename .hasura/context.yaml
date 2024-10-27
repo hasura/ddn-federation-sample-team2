@@ -10,5 +10,5 @@ definition:
       cloudEnvFile: ../.env.cloud
   scripts:
     docker-start:
-      bash: HASURA_DDN_PAT=$(ddn auth print-pat) docker compose -f compose.yaml --env-file .env up --build --pull always --watch
+      bash: HASURA_DDN_PAT=$(ddn auth print-pat) docker compose -f compose.yaml --env-file .env up --build --pull always -d
       powershell: $Env:HASURA_DDN_PAT = ddn auth print-pat; docker compose -f compose.yaml --env-file .env up --build --pull always -d

@@ -115,7 +115,7 @@ definition:
     orderByExpressionType: Sales_OrdersOrderBy
     filterInputTypeName: OrdersFilterInput
     aggregate:
-      queryRootField: ordersAggregate
+      queryRootField: Sales_ordersAggregate
   aggregateExpression: OrdersAggExp
 
 ---
@@ -226,3 +226,21 @@ definition:
   graphql:
     selectTypeName: OrdersAggExp
 
+---
+kind: Relationship
+version: v1
+definition:
+  name: products
+  source: Orders
+  target:
+    model:
+      name: Products
+      subgraph: experience
+      relationshipType: Object
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: productId
+      target:
+        modelField:
+          - fieldName: id

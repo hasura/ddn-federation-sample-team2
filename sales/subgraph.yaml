@@ -4,6 +4,7 @@ definition:
   name: sales
   generator:
     rootPath: .
+    graphqlTypeNamePrefix: sales_
   includePaths:
     - metadata
   envMapping:
