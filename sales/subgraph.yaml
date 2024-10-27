@@ -4,6 +4,7 @@ definition:
   name: sales
   generator:
     rootPath: .
+    graphqlTypeNamePrefix: sales_
   includePaths:
     - metadata
   envMapping:
@@ -19,16 +20,8 @@ definition:
       fromEnv: SALES_TS_READ_URL
     SALES_TS_WRITE_URL:
       fromEnv: SALES_TS_WRITE_URL
-    ANALYTICS_CLICKHOUSE_AUTHORIZATION_HEADER:
-      fromEnv: ANALYTICS_CLICKHOUSE_AUTHORIZATION_HEADER
-    ANALYTICS_CLICKHOUSE_READ_URL:
-      fromEnv: ANALYTICS_CLICKHOUSE_READ_URL
-    ANALYTICS_CLICKHOUSE_WRITE_URL:
-      fromEnv: ANALYTICS_CLICKHOUSE_WRITE_URL
   connectors:
     - path: connector/pg/connector.yaml
       connectorLinkName: pg
     - path: connector/ts/connector.yaml
       connectorLinkName: ts
-    - path: connector/clickhouse/connector.yaml
-      connectorLinkName: clickhouse

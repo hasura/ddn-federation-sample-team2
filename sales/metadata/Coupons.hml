@@ -71,42 +71,6 @@ definition:
           - userId
 
 ---
-kind: ObjectBooleanExpressionType
-version: v1
-definition:
-  name: CouponsBoolExp
-  objectType: Coupons
-  dataConnectorName: pg
-  dataConnectorObjectType: coupons
-  comparableFields:
-    - fieldName: amount
-      operators:
-        enableAll: true
-    - fieldName: code
-      operators:
-        enableAll: true
-    - fieldName: createdAt
-      operators:
-        enableAll: true
-    - fieldName: expirationDate
-      operators:
-        enableAll: true
-    - fieldName: id
-      operators:
-        enableAll: true
-    - fieldName: percentOrValue
-      operators:
-        enableAll: true
-    - fieldName: updatedAt
-      operators:
-        enableAll: true
-    - fieldName: userId
-      operators:
-        enableAll: true
-  graphql:
-    typeName: Sales_CouponsBoolExp
-
----
 kind: Model
 version: v1
 definition:
@@ -149,6 +113,10 @@ definition:
         uniqueIdentifier:
           - id
     orderByExpressionType: Sales_CouponsOrderBy
+    filterInputTypeName: CouponsFilterInput
+    aggregate:
+      queryRootField: couponsAggregate
+  aggregateExpression: CouponsAggExp
 
 ---
 kind: ModelPermissions
@@ -177,3 +145,67 @@ definition:
       target:
         argument:
           argumentName: amount
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CouponsBoolExp
+  operand:
+    object:
+      type: Coupons
+      comparableFields:
+        - fieldName: amount
+          booleanExpressionType: Int4BoolExp
+        - fieldName: code
+          booleanExpressionType: TextBoolExp
+        - fieldName: createdAt
+          booleanExpressionType: TimestamptzBoolExp
+        - fieldName: expirationDate
+          booleanExpressionType: TimestamptzBoolExp
+        - fieldName: id
+          booleanExpressionType: UuidBoolExp
+        - fieldName: percentOrValue
+          booleanExpressionType: TextBoolExp
+        - fieldName: updatedAt
+          booleanExpressionType: TimestamptzBoolExp
+        - fieldName: userId
+          booleanExpressionType: UuidBoolExp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: Sales_CouponsBoolExp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: CouponsAggExp
+  operand:
+    object:
+      aggregatedType: Coupons
+      aggregatableFields:
+        - fieldName: amount
+          aggregateExpression: Int4AggExp
+        - fieldName: code
+          aggregateExpression: TextAggExp
+        - fieldName: createdAt
+          aggregateExpression: TimestamptzAggExp
+        - fieldName: expirationDate
+          aggregateExpression: TimestamptzAggExp
+        - fieldName: id
+          aggregateExpression: UuidAggExp
+        - fieldName: percentOrValue
+          aggregateExpression: TextAggExp
+        - fieldName: updatedAt
+          aggregateExpression: TimestamptzAggExp
+        - fieldName: userId
+          aggregateExpression: UuidAggExp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: Sales_CouponsAggExp
+
