@@ -4,6 +4,7 @@ definition:
   current: default
   contexts:
     default:
+      project: precise-swan-5292
       supergraph: ../supergraph.yaml
       localEnvFile: ../.env
       cloudEnvFile: ../.env.cloud
