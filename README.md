@@ -1,4 +1,5 @@
 **Context: You have been invited to DDN Project by the owner of a supergraph (Team1)**
+For previous steps, see here - https://github.com/hasura/ddn-sample-app/tree/multirepo/team1admin
 
 You are subgraph admin for the `sales` subgraphs/domain.
 
